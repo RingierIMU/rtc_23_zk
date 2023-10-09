@@ -1,4 +1,4 @@
-# Zero KNowldege Proof Workshop
+# Zero Knowldege Proof Workshop
 The public repo for the Zero knowledge workshop for RTC 23
 
 ## Install Zokrates with Docker
