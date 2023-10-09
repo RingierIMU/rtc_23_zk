@@ -9,27 +9,14 @@ ERC721
 {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
-    address public verifierContractAddToTen;
-    address public verifierMagicNumber;
-
-    constructor() ERC721("Secret NFT", "SHH") {}    
-
-    struct Puzzle {
-        uint index;
-        address addr;
-    }
-
-    Puzzle[] public puzzles;
+    iVerifier private Verifier;
+    
+    constructor() ERC721("ZK NFT", "ZK_NFT") {}    
 
     mapping(uint => bool) tokenUniqueness;
 
-    event PuzzleAdded(address addr, uint puzzleId);
-
-    function addPuzzle(address _addr) public { 
-        uint tokenId = puzzles.length;
-        Puzzle memory puzzle = Puzzle(tokenId, _addr);
-        puzzles.push(puzzle);
-        emit PuzzleAdded(_addr,tokenId);
+    function setVerifier(address _addr) public { 
+        Verifier = iVerifier(_addr);
     }
 
     function mint(
@@ -41,12 +28,11 @@ ERC721
         uint[2] calldata c_p,
         uint[2] calldata h,
         uint[2] calldata k,
-        uint[1] calldata input, 
-        uint puzzleIndex
+        uint[1] calldata input
     ) public returns(bool) { 
         require(tokenUniqueness[a[0]] == false, "this answer was already previously submitted");
 
-        bool result = iVerifier(puzzles[puzzleIndex].addr).verifyTx(a, a_p, b, b_p, c, c_p, h, k, input);
+        bool result = Verifier.verifyTx(a, a_p, b, b_p, c, c_p, h, k, input);
         require(result, "incorrect proof");
 
         _tokenIdCounter.increment();
