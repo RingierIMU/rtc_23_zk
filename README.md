@@ -79,11 +79,9 @@ The first puzzle we'll create with Zokrates is: <b>What x and y add up to x * y 
     ~/zokrates generate-proof
     ```
 
-    Notice that this gives you evaluations of your polynomials such that A * B - C = H * K evaluated on some encrypted point, (with some other values corresponding to the blinding factors of A, B, and C). 
-
 6. We're ready to generate our Verifier smart contract! 
     ```
     ~/zokrates export-verifier
     ```
 
-    Notice that this generated a verifier.sol contract. Let's go ahead and rename it to something we can identify later, like TenVerifier.sol (you'll have to change the contract name also on line 144)
+    Notice that this generated a verifier.sol contract. 
