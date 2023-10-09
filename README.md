@@ -58,8 +58,6 @@ The first puzzle we'll create with Zokrates is: <b>What x and y add up to x * y 
     ~/zokrates compile -i addToTen.code
     ```
 
-    You should see your code being "flattened" like we went over in our example from the slides 
-
 3. Now that we have our circuit, we need our "trusted setup" 
     ```
     ~/zokrates setup
