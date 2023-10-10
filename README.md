@@ -63,9 +63,16 @@ The first puzzle we'll create with Zokrates is: <b>What x and y add up to x * y 
     ~/zokrates setup
     ```
 
-    Note - you will need a new setup for every new circuit you make. So if you change your code, you'll have to run this command again. 
+    Note - you will need a new setup for every new circuit you make. So if you change your code, you'll have to run this command again.
 
-4. Next, we need to compute our "witness" that knows the answer to the puzzle 
+4. We're ready to generate our Verifier smart contract! 
+    ```
+    ~/zokrates export-verifier
+    ```
+
+    Notice that this generated a verifier.sol contract. 
+
+5. Next, we need to compute our "witness" that knows the answer to the puzzle 
 
     ```
     ~/zokrates compute-witness -a 2 3
@@ -73,15 +80,8 @@ The first puzzle we'll create with Zokrates is: <b>What x and y add up to x * y 
 
     Notice there's a 'witness' file created now that has the steps of the computation. 
 
-5. Now we're ready to generate our proof based on our witness. 
+6. Now we're ready to generate our proof based on our witness. 
 
     ```
     ~/zokrates generate-proof
     ```
-
-6. We're ready to generate our Verifier smart contract! 
-    ```
-    ~/zokrates export-verifier
-    ```
-
-    Notice that this generated a verifier.sol contract. 
